@@ -11,7 +11,7 @@ class UpdateMedicationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateMedicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>['required','string','max:255'],
+            'description'=>['string'],
+            'quantity'=>['int'],
+            'expire_date'=>['string'],
         ];
     }
 }
