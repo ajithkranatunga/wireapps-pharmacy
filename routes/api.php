@@ -27,4 +27,16 @@ Route::prefix('medications')
         Route::get('/{medication}', [MedicationController::class, 'show'])->name('show');
         Route::put('/{medication}', [MedicationController::class, 'update'])->name('update');
         Route::delete('/{medication}', [MedicationController::class, 'destroy'])->name('destroy');
+
+Route::prefix('users')
+    ->name('users.')
+    ->group(function (){
+        Route::get('/', [\App\Http\Controllers\Api\UserController::class, 'index'])->name('index');
+        Route::post('/', [\App\Http\Controllers\Api\UserController::class, 'store'])->name('store');
+        Route::get('/{user}', [\App\Http\Controllers\Api\UserController::class, 'show'])->name('show');
+        Route::put('/{user}', [\App\Http\Controllers\Api\UserController::class, 'update'])->name('update');
+        Route::delete('/{user}', [\App\Http\Controllers\Api\UserController::class, 'destroy'])->name('destroy');
+        Route::post('/login', \App\Http\Controllers\Api\UserController::class, 'login')
+            ->middleware('guest:sanctum')
+            ->name('login');
     });
