@@ -15,4 +15,8 @@ class Medication extends Model
         'quantity',
         'expire_date',
     ];
+
+    protected $casts = [
+        'expire_date' => 'datetime'
+    ];
 }

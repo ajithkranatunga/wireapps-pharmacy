@@ -37,9 +37,11 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        //return new UserResource($user);
+        return $user->getPermissionsViaRoles()->pluck('name');
+        //return $user->can('create medication');
     }
 
     /**
@@ -87,6 +89,10 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
-        return $request->user()->currentAccessToken()->delete();
+        $request->user()->currentAccessToken()->delete();
+
+        return response([
+            'message'=>'Successfully logged out'
+        ]);
     }
 }

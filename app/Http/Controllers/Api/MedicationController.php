@@ -16,7 +16,15 @@ class MedicationController extends Controller
      */
     public function index()
     {
-        return MedicationResource::collection(Medication::all());
+        if (auth()->user()->cannot('view medication')){
+            return response([
+                'message'=>'Unauthorized action'
+            ]);
+        }
+
+        return MedicationResource::collection(
+            Medication::all()->where('expire_date', '>',now())
+        );
     }
 
     /**
@@ -24,6 +32,11 @@ class MedicationController extends Controller
      */
     public function store(StoreMedicationRequest $request)
     {
+        if (auth()->user()->cannot('create medication')){
+            return response([
+                'message'=>'Unauthorized action'
+            ]);
+        }
         $medication = Medication::create([
             'name'=>$request->name,
             'description'=>$request->description,
@@ -39,6 +52,11 @@ class MedicationController extends Controller
      */
     public function show(Medication $medication)
     {
+        if (auth()->user()->cannot('view medication')){
+            return response([
+                'message'=>'Unauthorized action'
+            ]);
+        }
         return new MedicationResource($medication);
     }
 
@@ -47,6 +65,11 @@ class MedicationController extends Controller
      */
     public function update(UpdateMedicationRequest $request, Medication $medication)
     {
+        if (auth()->user()->cannot('update medication')){
+            return response([
+                'message'=>'Unauthorized action'
+            ]);
+        }
         $medication->update([
             'name'=>$request->name,
             'description'=>$request->description,
@@ -62,6 +85,15 @@ class MedicationController extends Controller
      */
     public function destroy(Medication $medication)
     {
-        return $medication->delete();
+        if (auth()->user()->can('delete medication')){
+            return $medication->forceDelete();
+        } else if (auth()->user()->can('soft delete medication')){
+            return $medication->delete();
+        } else {
+            return response([
+                'message'=>'Unauthorized action'
+            ]);
+        }
+
     }
 }

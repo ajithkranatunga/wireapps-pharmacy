@@ -14,4 +14,9 @@ class Customer extends Model
         'mobile',
         'age',
     ];
+
+    public function prescriptions()
+    {
+        return $this->hasMany(Prescription::class, 'customer_id');
+    }
 }

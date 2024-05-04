@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_record', function (Blueprint $table) {
+        Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
+            $table->datetime('created');
             $table->foreignId('customer_id')->constrained();
-            $table->foreignId('medication_id')->constrained();
-            $table->dateTime('date_time');
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained();
+            $table->softDeletes();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_record');
+        Schema::dropIfExists('prescriptions');
     }
 };

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->date('expire_date')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
