@@ -16,11 +16,11 @@ Route::resource('/medications', MedicationController::class)
     ->only('index','store','destroy','update','show');
 
 Route::resource('/customers', CustomerController::class)
-    //->middleware(['auth:sanctum'])
+    ->middleware(['auth:sanctum'])
     ->only('index','store','destroy','update','show');
 
 Route::resource('/prescriptions', \App\Http\Controllers\Api\PrescriptionController::class)
-    //->middleware(['auth:sanctum'])
+    ->middleware(['auth:sanctum'])
     ->only('index','store','destroy','update','show');
 
 

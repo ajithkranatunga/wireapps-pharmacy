@@ -19,4 +19,9 @@ class Medication extends Model
     protected $casts = [
         'expire_date' => 'datetime'
     ];
+
+    public function prescriptions()
+    {
+        return $this->belongsToMany(Prescription::class);
+    }
 }

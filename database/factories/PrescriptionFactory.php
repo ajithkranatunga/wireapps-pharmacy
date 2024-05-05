@@ -19,10 +19,9 @@ class PrescriptionFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'description' => fake()->text(),
-            'quantity' => fake()->numberBetween(1000,2000),
-            'expire_date' => fake()->dateTime(),
+            'created' => now(),
+            'customer_id'=> rand(1,10),
+            'user_id' => rand(1,3),
         ];
     }
 }

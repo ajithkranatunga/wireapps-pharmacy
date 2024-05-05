@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "30c69ebb-2529-43c3-aba9-6274f57b4896",
+		"name": "wireapps-pharmacy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5460574"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "d5e6bb1f-4c6b-45c2-affa-d7aca3be67aa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"John Doley\",\n    \"username\":\"john\",\n    \"email\":\"john@test.com\",\n    \"role\":\"cashier\",\n    \"password\":\"password\",\n    \"password_confirmation\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "baaae8be-cdcc-4d17-9ed2-6b87272e53cd"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n//     \"username\":\"kamal\",\n//     \"password\":\"password123\"\n// }\n\n{\n    \"username\":\"john.doe\",\n    \"password\":\"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "viewUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "84e7282f-56ff-4b9b-b5ca-5f7e83d18249"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "createCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|WRLZfTRYQzUipSXHPyu8Yk023utMG6NbnCgHpke545df2cf3",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "4e3f45e9-fde2-4e46-a214-598cdce1b1e8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Kamal\",\n    \"age\":43,\n    \"mobile\":\"0712343545\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/customers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customerList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|WRLZfTRYQzUipSXHPyu8Yk023utMG6NbnCgHpke545df2cf3",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/customers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "viewCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|WRLZfTRYQzUipSXHPyu8Yk023utMG6NbnCgHpke545df2cf3",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "47107229-87ee-4167-bef7-81afdc798c68"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/customers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|q5wmlrn0yGCIv7DnsfZHllkpvtGe91Y6EdWp9heA4cae0088",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "4c92e9a2-3dfe-4bbb-a8d4-b4fa720599a6"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Anoma Herath\",\n    \"age\": 34,\n    \"mobile\": \"0721234345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/customers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|q5wmlrn0yGCIv7DnsfZHllkpvtGe91Y6EdWp9heA4cae0088",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "fcc710c3-2d80-4998-839d-cb2a00047acd"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/customers/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "medication",
+			"item": [
+				{
+					"name": "createMedication",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|B3pTyacxEQJjGLtGXRbrmWBdM9RbbC4nAGnJ2JKC311250d2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "2716240d-187a-4350-8177-dd01028b7e0f"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Piriton Syrup\",\n    \"description\":\"symptomatic control of all allergic conditions\",\n    \"quantity\":1000,\n    \"expire_date\":\"2027-10-24\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/medications/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"medications",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "medicationsList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|q5wmlrn0yGCIv7DnsfZHllkpvtGe91Y6EdWp9heA4cae0088",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "e08ce65c-b610-480b-9801-2593bec4ef19"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/medications/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"medications",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "viewMedication",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|q5wmlrn0yGCIv7DnsfZHllkpvtGe91Y6EdWp9heA4cae0088",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "c6dab6f3-b4d4-4f1a-8b9e-74479baac739"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/medications/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"medications",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMedication",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|q5wmlrn0yGCIv7DnsfZHllkpvtGe91Y6EdWp9heA4cae0088",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "ab1a3036-87b5-4d89-a112-1b415fea91c3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":1,\n    \"name\": \"Piriton Syrup\",\n    \"description\": \"symptomatic control of all allergic conditions\",\n    \"quantity\": 500,\n    \"expire_date\": \"2028-10-31\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/medications/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"medications",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMedication",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|q5wmlrn0yGCIv7DnsfZHllkpvtGe91Y6EdWp9heA4cae0088",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"uuid": "64be9496-c928-4eb1-8925-7fa43f8523ac"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/medications/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"medications",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "prescription",
+			"item": [
+				{
+					"name": "viewPrescriptions",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

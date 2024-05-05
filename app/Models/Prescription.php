@@ -9,6 +9,8 @@ class Prescription extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -27,10 +29,7 @@ class Prescription extends Model
 
     public function medications()
     {
-        return $this->belongsToMany(
-            Medication::class,
-            'medication_prescription',
-        'medication_id',
-        'prescription_id');
+
+        return $this->belongsToMany(Medication::class);
     }
 }

@@ -18,9 +18,8 @@ class PrescriptionResource extends JsonResource
             'id' => $this->id,
             'created'=>$this->created,
             'customer'=>new CustomerResource($this->customer),
-            //'customer'=>new CustomerCollection($this->customers),
             'user'=>new UserResource($this->user),
-            //'medications'=>new MedicationCollection($this->medications),
+            'medications'=>new MedicationCollection($this->medications),
         ];
     }
 }
